@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Escaladores de risco";
+}
+
+<div class="container mt-5">
+
+    <h1>Escalada de risco</h1>
+
+    <form method="post" onsubmit="scrollToResults()">
+
+        <div class="form-group">
+
+            <label for="mincalorias">Minimo de calorias:</label>
+            <input type="number" class="form-control" id="mincalorias" name="mincalorias" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pesoMaximo">Peso maximo:</label>
+            <input type="number" class="form-control" id="pesoMaximo" name="pesoMaximo" required>
+        </div>
+
+        <div class="form-group">
+
+            <label for="elementos">Elementos:</label>
+            <textarea class="form-control" id="elementos" name="elementos" rows="5" required></textarea>
+            <small class="form-text text-muted">Ingrese los elementos en el formato: nombre Peso Calorías</small>
+        </div>
+
+
+        <button type="submit" class="btn btn-success">Calcular</button>
+
+        
+
+
+    </form>
+
+    @if (Model.Resultados != null)
+    {
+        <div id="results">
+
+            <h2 class="mt-4">Resultados:</h2>
+            @if (Model.Resultados.Any())
+            {
+                <ul class="p-3">
+                @foreach (var elemento in Model.Resultados)
+                {
+                        <li>@elemento</li>
+                }
+                </ul>
+            }
+            else
+            {
+                <p>No hay elementos viables para escalar el risco según tus requerimientos</p>
+            }
+            <div class="">
+                 <a class="btn btn-primary" role="button" asp-area="" asp-page="/Index">Limpiar</a>
+            </div>
+
+
+
+        </div>
+        
+    }
+
+    
+</div>
+
+

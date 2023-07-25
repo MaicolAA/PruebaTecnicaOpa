@@ -1,0 +1,7 @@
+C:\Users\MAICOL\Desktop\deiby\VS\slnPruebTecnicaOPA\slnPruebTecnicaOPA\obj\Release\net6.0\PubTmp\Out\slnPruebTecnicaOPA.exe
+C:\Users\MAICOL\Desktop\deiby\VS\slnPruebTecnicaOPA\slnPruebTecnicaOPA\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+C:\Users\MAICOL\Desktop\deiby\VS\slnPruebTecnicaOPA\slnPruebTecnicaOPA\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Users\MAICOL\Desktop\deiby\VS\slnPruebTecnicaOPA\slnPruebTecnicaOPA\obj\Release\net6.0\PubTmp\Out\slnPruebTecnicaOPA.dll
+C:\Users\MAICOL\Desktop\deiby\VS\slnPruebTecnicaOPA\slnPruebTecnicaOPA\obj\Release\net6.0\PubTmp\Out\slnPruebTecnicaOPA.deps.json
+C:\Users\MAICOL\Desktop\deiby\VS\slnPruebTecnicaOPA\slnPruebTecnicaOPA\obj\Release\net6.0\PubTmp\Out\slnPruebTecnicaOPA.runtimeconfig.json
+C:\Users\MAICOL\Desktop\deiby\VS\slnPruebTecnicaOPA\slnPruebTecnicaOPA\obj\Release\net6.0\PubTmp\Out\slnPruebTecnicaOPA.pdb
