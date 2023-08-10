@@ -1,43 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 public class IndexModel : PageModel
 {
     [BindProperty]
-    public int MinCalorias {get; set; }
+    public int minCalorias {get; set; }
 
     [BindProperty]
-    public int PesoMaximo {get; set; }
+    public int pesoMaximo {get; set; }
 
     [BindProperty]
-    public string Elementos {get; set;}
+    public int cantElementos { get; set; }
+
+    [BindProperty]
+    public List<element> Elementos { get; set; }
 
     public List<string> Resultados {get; set; }
 
     public void OnPost()
     {
-        List<element> elementosList = parseElementos(Elementos);
-        Resultados = findOptimusCombination(elementosList, MinCalorias, PesoMaximo);
-    }
-
-    private List<element> parseElementos(string elementosString)
-    {
-        var elementosList = new List<element>();
-        var lineas = elementosString.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-        foreach (var linea in lineas)
-        {
-            var partes = linea.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            if (partes.Length == 3 && int.TryParse(partes[1], out int peso) && int.TryParse(partes[2], out int calorias))
-            {
-                elementosList.Add(new element { name = partes[0], height = peso, calories = calorias });
-            }
-        }
-
-        return elementosList;
+        Resultados = findOptimusCombination(Elementos, minCalorias, pesoMaximo);
     }
 
     private List<string> findOptimusCombination(List<element> elementos, int caloriasMinimas, int pesoMaximo)

@@ -8,40 +8,57 @@
 
     <h1>Escalada de risco</h1>
 
-    <form method="post" onsubmit="scrollToResults()">
-
+    <form method="post">
         <div class="form-group">
-
-            <label for="mincalorias">Minimo de calorias:</label>
-            <input type="number" class="form-control" id="mincalorias" name="mincalorias" required>
+            <label for="minCalorias">Minimo de calorias:</label>
+            <input type="number" class="form-control" id="minCalorias" name="minCalorias" asp-for="minCalorias" required>
         </div>
-
         <div class="form-group">
             <label for="pesoMaximo">Peso maximo:</label>
-            <input type="number" class="form-control" id="pesoMaximo" name="pesoMaximo" required>
+            <input type="number" class="form-control" id="pesoMaximo" name="pesoMaximo" asp-for="pesoMaximo" required>
         </div>
-
         <div class="form-group">
-
-            <label for="elementos">Elementos:</label>
-            <textarea class="form-control" id="elementos" name="elementos" rows="5" required></textarea>
-            <small class="form-text text-muted">Ingrese los elementos en el formato: nombre Peso Calorías</small>
+            <label for="cantElementos">¿Cuantos elementos deseas procesar?</label>
+            <input type="number" class="form-control" id="cantElementos" name="cantElementos" asp-for="cantElementos" required>
+            <small class="text-muted">Cantidad de elementos disponibles</small>
         </div>
 
+        <div id="elementos-container">
+            @for (int i = 0; i < Model.cantElementos; i++)
+            {
+                <div class="row elemento">
+                    <label>Ingrese los parametros del elemento @(i+1)</label><br><br>
 
-        <button type="submit" class="btn btn-success">Calcular</button>
+                    <div class="col-md-3">
+                        <label>Nombre:</label>
+                        <input type="text" class="form-control" name="Elementos[@i].name" value="elemento @(1+i)" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Peso:</label>
+                        <input type="number" class="form-control" name="Elementos[@i].height"  required>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Calorías:</label>
+                        <input type="number" class="form-control" name="Elementos[@i].calories"  required>
+                        <br><br><br>
+                    </div>
 
+                    
+                </div>
+            }
+        </div>
         
-
-
+        <button type="submit" class="btn btn-success">Calcular</button>
+        
     </form>
+
+
 
     @if (Model.Resultados != null)
     {
         <div id="results">
-
             <h2 class="mt-4">Resultados:</h2>
-            @if (Model.Resultados.Any())
+            @if(Model.Resultados.Any())
             {
                 <ul class="p-3">
                 @foreach (var elemento in Model.Resultados)
@@ -52,7 +69,10 @@
             }
             else
             {
-                <p>No hay elementos viables para escalar el risco según tus requerimientos</p>
+                <p>No hay elementos viables para escalar el risco según tus requerimientos, o no has llenado
+                    todos los campos requeridos
+                    
+                </p>
             }
             <div class="">
                  <a class="btn btn-primary" role="button" asp-area="" asp-page="/Index">Limpiar</a>
@@ -66,5 +86,7 @@
 
     
 </div>
+
+
 
 
